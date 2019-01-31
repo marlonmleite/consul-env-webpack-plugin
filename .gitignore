@@ -1,0 +1,14 @@
+syntax: glob
+*~
+npm-debug.log
+node_modules/
+.tmp/
+.dist/
+coverage/
+.DS_Store
+.idea
+.nyc_output
+.vscode
+tsconfig.json
+yarn-error.log
+dist/
