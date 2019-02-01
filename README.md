@@ -47,7 +47,7 @@ module.exports = {
   ...
   plugins: [
     new ConsulPlugin({
-      url: 'config/front/data', //path to keys
+      path: 'config/front/data', //path to keys
       consul: {
         ... //node-consul options - see https://github.com/silas/node-consul
       }

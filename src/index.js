@@ -4,17 +4,15 @@ import webpack from 'webpack'
 class ConsulPlugin {
   constructor (config = {}) {
     this.config = config
-    this.consul = consul(config.options)
+    this.consul = consul(config.consul)
   }
 
-  showErrors (error) {
-    console.warn(error)
-
+  showErrors () {
     throw new Error('Fail to load consul, verify the consul server.')
   }
 
-  buildDefinitions (values = {}) {
-    const envs = JSON.parse(values || {})
+  buildDefinitions (values = '{}') {
+    const envs = JSON.parse(values)
     const defs = {}
 
     Object.keys(envs).forEach(key => {
