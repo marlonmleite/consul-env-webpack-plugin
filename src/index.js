@@ -26,12 +26,16 @@ class ConsulPlugin {
     const { path } = this.config
 
     return new Promise((resolve) => {
-      this.consul.kv.get(path, (error, item) => {
+      this.consul.kv.get(path, (error, item, response) => {
         let defs
 
         if (error) {
           this.showErrors()
-        } else {
+        } else if (!item && response) {
+          console.log(response.req._header)
+
+          throw new Error('HTTP status code: 404. Fail to load key/values from the endpoint.')
+        } else if (item) {
           defs = this.buildDefinitions(item.Value)
         }
 
